@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/first")
 public class FirstController {
 
+    @GetMapping(value ="/")
+    public ResponseEntity<String> showIndex(){
+        return new ResponseEntity<String>("Hello Word index!", HttpStatus.CREATED);
+    }
+
     @GetMapping(value = "/show")
     public ResponseEntity<String> showText(){
         return new ResponseEntity<String>("Hello Word!", HttpStatus.CREATED);
