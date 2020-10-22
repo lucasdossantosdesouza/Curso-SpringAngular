@@ -1,6 +1,7 @@
-package com.br.helpdesk.security.jwt;
+package com.br.helpdesk.service.impl;
 
 import com.br.helpdesk.entity.Usuario;
+import com.br.helpdesk.security.jwt.JwtUserFactory;
 import com.br.helpdesk.service.UsuarioService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
