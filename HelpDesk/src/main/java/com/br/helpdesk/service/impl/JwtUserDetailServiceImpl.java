@@ -3,6 +3,7 @@ package com.br.helpdesk.service.impl;
 import com.br.helpdesk.entity.Usuario;
 import com.br.helpdesk.security.jwt.JwtUserFactory;
 import com.br.helpdesk.service.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class JwtUserDetailServiceImpl implements UserDetailsService {
+   @Autowired
    private UsuarioService usuarioService;
 
     @Override
