@@ -29,7 +29,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest httpServletRequest,
                                     HttpServletResponse httpServletResponse,
                                     FilterChain filterChain) throws ServletException, IOException {
-      String authToken = httpServletRequest.getHeader("Autorization");
+      String authToken = httpServletRequest.getHeader("Authorization");
       String username = jwtTokenUtil.getUserNameFromToken(authToken);
       if(username != null && SecurityContextHolder.getContext().getAuthentication() == null){
           UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);

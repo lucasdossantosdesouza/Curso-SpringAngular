@@ -25,33 +25,33 @@ public class JwtTokenUtil implements Serializable {
     private Long expiration;
 
     public String getUserNameFromToken(String token){
-        String username = null;
+        String username;
         try{
             final Claims claims = getClaimsFromToken(token);
             username = claims.getSubject();
         }catch (Exception e){
-
+            username = null;
         }
         return username;
     }
 
     public Date getExpirationDataFromToken(String token){
-        Date expiration = null;
+        Date expiration ;
         try{
             final Claims claims = getClaimsFromToken(token);
             expiration = claims.getExpiration();
         }catch (Exception e){
-
+            expiration = null;
         }
         return expiration;
     }
 
     private Claims getClaimsFromToken(String token){
-        Claims claims = null;
+        Claims claims;
         try{
             claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
         }catch (Exception e){
-
+            claims = null;
         }
         return claims;
     }
