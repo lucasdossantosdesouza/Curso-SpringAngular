@@ -17,18 +17,13 @@ import java.io.IOException;
 
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
+    @Qualifier("jwtUserDetailServiceImpl")
+    @Autowired
     private UserDetailsService userDetailsService;
 
-
+    @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
-    public JwtAuthenticationTokenFilter(UserDetailsService userDetailsService, JwtTokenUtil jwtTokenUtil) {
-        this.userDetailsService = userDetailsService;
-        this.jwtTokenUtil = jwtTokenUtil;
-    }
-
-    public JwtAuthenticationTokenFilter() {
-    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest,
