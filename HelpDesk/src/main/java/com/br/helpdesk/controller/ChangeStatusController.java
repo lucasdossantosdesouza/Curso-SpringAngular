@@ -3,5 +3,5 @@ package com.br.helpdesk.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class TicketController {
+public class ChangeStatusController {
 }
