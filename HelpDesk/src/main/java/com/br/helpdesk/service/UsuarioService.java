@@ -1,7 +1,14 @@
 package com.br.helpdesk.service;
 
-import org.springframework.stereotype.Service;
+import com.br.helpdesk.entity.Usuario;
+import org.springframework.data.domain.Page;
 
-@Service
-public class UsuarioService {
+public interface UsuarioService {
+    Usuario findByEmail(String email);
+
+    Usuario createOrUpdate(Usuario usuario);
+
+    Usuario findById(String id);
+
+    Page<Usuario> findAll(int page, int count);
 }
