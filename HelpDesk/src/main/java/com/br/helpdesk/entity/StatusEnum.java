@@ -1,7 +1,5 @@
 package com.br.helpdesk.entity;
 
-import org.springframework.data.mongodb.core.aggregation.*;
-
 public enum StatusEnum {
     New,
     Assigned,
