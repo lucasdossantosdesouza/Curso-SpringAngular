@@ -16,7 +16,7 @@ public class JwtUserDetailServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Usuario usuario = usuarioService.findByEmail(email);
         if(usuario == null){
-            throw new UsernameNotFoundException(String.format("No user found "));
+            throw new UsernameNotFoundException(String.format("No user found with username '%s'.",email));
         }else{
             return JwtUserFactory.create(usuario);
         }
