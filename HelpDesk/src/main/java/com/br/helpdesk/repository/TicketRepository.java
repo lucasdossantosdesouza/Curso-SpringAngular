@@ -10,8 +10,17 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TicketRepository extends MongoRepository<Ticket,String> {
 
-    Page<Ticket> findByUsuarioIdOrderByDataDesc(Pageable pageable, String userId);
+    Page<Ticket> findByUsuarioIdOrderByDataDesc(String userId, Pageable paginas);
 
     Page<Ticket> findByTituloIgnoreCaseContainingAndStatusIgnoreCaseContainingAndPriorityIgnoreCaseContainingOrderByDataDesc(
-            String titulo, String status, String priority, Pageable pageable);
+            String titulo, String status, String priority, Pageable paginas);
+
+    Page<Ticket> findByTituloIgnoreCaseContainingAndStatusIgnoreCaseContainingAndPriorityIgnoreCaseContainingAndUsuarioIdOrderByDataDesc(
+            String titulo, String status, String priority, Pageable paginas);
+
+    Page<Ticket> findByTituloIgnoreCaseContainingAndStatusIgnoreCaseContainingAndPriorityIgnoreCaseContainingAndAndAssigneredUserIdOrderByDataDesc(
+            String titulo, String status, String priority, Pageable paginas);
+
+    Page<Ticket> findByNumber(Integer numero, Pageable paginas);
+
 }
