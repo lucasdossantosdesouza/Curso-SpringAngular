@@ -5,7 +5,12 @@ import com.br.helpdesk.repository.UsuarioRepository;
 import com.br.helpdesk.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class UsuarioServiceImp implements UsuarioService {
@@ -15,21 +20,27 @@ public class UsuarioServiceImp implements UsuarioService {
 
     @Override
     public Usuario findByEmail(String email) {
-        return null;
+        return usuarioRepository.findByEmail(email);
     }
 
     @Override
     public Usuario createOrUpdate(Usuario usuario) {
-        return null;
+        return usuarioRepository.save(usuario);
     }
 
     @Override
-    public Usuario findById(String id) {
-        return null;
+    public Optional<Usuario> findById(String id) {
+        return usuarioRepository.findById(id);
+    }
+
+    @Override
+    public void delete(String id) {
+        usuarioRepository.deleteById(id);
     }
 
     @Override
     public Page<Usuario> findAll(int page, int count) {
-        return null;
+        Pageable pageable = PageRequest.of(page, count);
+        return usuarioRepository.findAll(pageable);
     }
 }
