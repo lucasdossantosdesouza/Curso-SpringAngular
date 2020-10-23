@@ -149,9 +149,9 @@ public class TicketController {
         Response<Page<Ticket>> ticketResponse = new Response<>();
         Usuario usuario = userFromRequest(request);
         Page<Ticket> tickets = null;
-        if(ProfileEnum.ROLE_TECHNICIAN.equals(usuario.getProfile())){
+        if(ProfileEnum.ROLE_TECHNICIAN == usuario.getProfile()){
             tickets = ticketService.listTicket(page, count);
-        }else if(ProfileEnum.ROLE_TECHNICIAN.equals(usuario.getProfile())){
+        }else if(ProfileEnum.ROLE_CUSTOMER == usuario.getProfile()){
             tickets = ticketService.findByCurrentUser(page, count,usuario.getId());
         }
         ticketResponse.setData(tickets);
