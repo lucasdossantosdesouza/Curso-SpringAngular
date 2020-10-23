@@ -80,7 +80,7 @@ public class UsuarioController {
 
     @GetMapping(value = "/{id}")
     @PreAuthorize("hasAnyRole('ADMIN')")
-    public ResponseEntity<Response<Usuario>> update(@PathVariable String id) {
+    public ResponseEntity<Response<Usuario>> findById(@PathVariable String id) {
         Response<Usuario> usuarioResponse = new Response<>();
         Optional<Usuario> usuarioFind = (Optional<Usuario>) usuarioService.findById(id);
         if(usuarioFind == null || usuarioFind.get() == null){
