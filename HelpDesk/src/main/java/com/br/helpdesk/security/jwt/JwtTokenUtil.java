@@ -36,7 +36,7 @@ public class JwtTokenUtil implements Serializable {
     }
 
     public Date getExpirationDataFromToken(String token){
-        Date expiration ;
+        Date expiration;
         try{
             final Claims claims = getClaimsFromToken(token);
             expiration = claims.getExpiration();
@@ -76,7 +76,7 @@ public class JwtTokenUtil implements Serializable {
        return Jwts.builder()
                .setClaims(claims)
                .setExpiration(expirationDate)
-               .signWith(SignatureAlgorithm.ES512, secret)
+               .signWith(SignatureAlgorithm.HS512, secret)
                .compact();
     }
 

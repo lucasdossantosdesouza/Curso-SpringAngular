@@ -10,9 +10,9 @@ public class JwtUser implements UserDetails {
     private String id;
     private String username;
     private String password;
-    private List<? extends GrantedAuthority> authorities;
+    private Collection<? extends GrantedAuthority> authorities;
 
-    public JwtUser(String id, String username, String password, List<GrantedAuthority> authorities) {
+    public JwtUser(String id, String username, String password, Collection<GrantedAuthority> authorities) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -36,41 +36,22 @@ public class JwtUser implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setAuthorities(List<? extends GrantedAuthority> authorities) {
-        this.authorities = authorities;
-    }
 }
