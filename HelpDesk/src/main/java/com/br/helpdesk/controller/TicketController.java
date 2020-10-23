@@ -1,6 +1,7 @@
 package com.br.helpdesk.controller;
 
 import com.br.helpdesk.api.response.Response;
+import com.br.helpdesk.api.dto.Summary;
 import com.br.helpdesk.entity.*;
 import com.br.helpdesk.security.jwt.JwtTokenUtil;
 import com.br.helpdesk.service.TicketService;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicReference;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -142,7 +144,8 @@ public class TicketController {
 
     @GetMapping(value = "/{page}/{count}")
     @PreAuthorize("hasAnyRole('CUSTOMER','TECHNICIAN')")
-    public ResponseEntity<Response<Page<Ticket>>> listTicket(HttpServletRequest request,@PathVariable("page") int page, @PathVariable("count") int count) {
+    public ResponseEntity<Response<Page<Ticket>>> listTicket(HttpServletRequest request,@PathVariable("page") int page,
+                                                             @PathVariable("count") int count) {
         Response<Page<Ticket>> ticketResponse = new Response<>();
         Usuario usuario = userFromRequest(request);
         Page<Ticket> tickets = null;
@@ -188,6 +191,99 @@ public class TicketController {
         }
         ticketResponse.setData(tickets);
         return ResponseEntity.ok(ticketResponse);
+    }
+
+    @PutMapping("/{id}/{status}")
+    @PreAuthorize("hasAnyRole('CUSTOMER','TECHNICIAN')")
+    public ResponseEntity<Response<Ticket>> changeStatus(HttpServletRequest request,
+                                                         @PathVariable("status") String status,
+                                                         @PathVariable("id") String id,
+                                                         @RequestBody Ticket ticket,
+                                                         BindingResult result){
+        Response<Ticket> ticketResponse = new Response<>();
+        try {
+            validateChangeStatus(id , status, result);
+            if (result.hasErrors()) {
+                result.getAllErrors().forEach(objectError ->
+                        ticketResponse.getErrors().add(objectError.getDefaultMessage()));
+                return ResponseEntity.badRequest().body(ticketResponse);
+            }
+            Optional<Ticket> ticketFind = ticketService.findById(ticket.getId());
+
+            if(ticketFind != null) {
+                ticketFind.get().setStatus(StatusEnum.getStatus(status));
+                if(status.equals("Assigned")){
+                    ticketFind.get().setAssigneredUser(userFromRequest(request));
+                }
+                Ticket ticketPersist = ticketService.createOrUpdate(ticket);
+                ChangeStatus changeStatus = new ChangeStatus();
+                changeStatus.setUsuario(userFromRequest(request));
+                changeStatus.setData(new Date());
+                changeStatus.setStatusEnum(StatusEnum.getStatus(status));
+                changeStatus.setTicket(ticketPersist);
+                ticketService.createCahngesStatus(changeStatus);
+                ticketResponse.setData(ticketPersist);
+            }
+        }catch (Exception e){
+            ticketResponse.getErrors().add(e.getMessage());
+            return ResponseEntity.badRequest().body(ticketResponse);
+        }
+
+        return ResponseEntity.ok(ticketResponse);
+    }
+    @PutMapping("/sumary")
+    @PreAuthorize("hasAnyRole('CUSTOMER','TECHNICIAN')")
+    public ResponseEntity<Response<Summary>> findSummary(HttpServletRequest request,
+                                                         BindingResult result){
+        AtomicReference<Integer> amountNew = new AtomicReference<>(0);
+        AtomicReference<Integer> amountAssigned = new AtomicReference<>(0);
+        AtomicReference<Integer> amountResolved = new AtomicReference<>(0);
+        AtomicReference<Integer> amountAproved = new AtomicReference<>(0);
+        AtomicReference<Integer> amountDisaproved = new AtomicReference<>(0);
+        AtomicReference<Integer> amountClosed = new AtomicReference<>(0);
+
+        Response<Summary> summaryResponse = new Response<>();
+        Summary summary = new Summary();
+
+        Iterable<Ticket> tickets = ticketService.findAll();
+        tickets.forEach(ticket -> {
+            if(StatusEnum.New.equals(ticket.getStatus())){
+                amountNew.getAndSet(amountNew.get() + 1);
+            }
+            if(StatusEnum.Resolved.equals(ticket.getStatus())){
+                amountResolved.getAndSet(amountResolved.get() + 1);
+            }
+            if(StatusEnum.Aproved.equals(ticket.getStatus())){
+                amountAproved.getAndSet(amountAproved.get() + 1);
+            }
+            if(StatusEnum.Disaproved.equals(ticket.getStatus())){
+                amountDisaproved.getAndSet(amountDisaproved.get() + 1);
+            }
+            if(StatusEnum.Assigned.equals(ticket.getStatus())){
+                amountAssigned.getAndSet(amountAssigned.get() + 1);
+            }
+            if(StatusEnum.Closed.equals(ticket.getStatus())){
+                amountClosed.getAndSet(amountClosed.get() + 1);
+            }
+        });
+        summary.setAmountNew(amountNew.get());
+        summary.setAmountResolved(amountResolved.get());
+        summary.setAmountAproved(amountAproved.get());
+        summary.setAmountDisaproved(amountDisaproved.get());
+        summary.setAmountAssigned(amountAssigned.get());
+        summary.setAmountClosed(amountClosed.get());
+        summaryResponse.setData(summary);
+        return ResponseEntity.ok(summaryResponse);
+    }
+
+    private void validateChangeStatus(String id, String status, BindingResult result) {
+        if(id == null || id.equals("")){
+            result.addError(new ObjectError("User", "Id no Information"));
+            return;
+        }
+        if(status == null || status.equals("")){
+            result.addError(new ObjectError("User", "status no Information"));
+        }
     }
 
     private void validateCreateTicket(Ticket ticket, BindingResult result){
