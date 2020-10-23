@@ -80,7 +80,7 @@ public class UsuarioController {
 
     @GetMapping(value = "/{id}")
     @PreAuthorize("hasAnyRole('ADMIN')")
-    public ResponseEntity<Response<Usuario>> findById(@PathVariable String id) {
+    public ResponseEntity<Response<Usuario>> findById(@PathVariable("id") String id) {
         Response<Usuario> usuarioResponse = new Response<>();
         Optional<Usuario> usuarioFind = usuarioService.findById(id);
         if(usuarioFind == null || usuarioFind.get() == null){
@@ -93,7 +93,7 @@ public class UsuarioController {
 
     @DeleteMapping(value = "/{id}")
     @PreAuthorize("hasAnyRole('ADMIN')")
-    public ResponseEntity<Response<String>> delete(@PathVariable String id) {
+    public ResponseEntity<Response<String>> delete(@PathVariable("id") String id) {
         Response<String> usuarioResponse = new Response<>();
         Optional<Usuario> usuarioFind = usuarioService.findById(id);
         if(usuarioFind == null || usuarioFind.get() == null){
@@ -106,7 +106,7 @@ public class UsuarioController {
 
     @GetMapping(value = "/{page}/{count}")
     @PreAuthorize("hasAnyRole('ADMIN')")
-    public ResponseEntity<Response<Page<Usuario>>> findAll(@PathVariable int page,@PathVariable int count) {
+    public ResponseEntity<Response<Page<Usuario>>> findAll(@PathVariable("page") int page, @PathVariable("count") int count) {
         Response<Page<Usuario>> usuarioResponse = new Response<>();
         Page<Usuario> usuarios = usuarioService.findAll(page, count);
         usuarioResponse.setData(usuarios);

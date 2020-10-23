@@ -1,10 +1,7 @@
 package com.br.helpdesk.controller;
 
 import com.br.helpdesk.api.response.Response;
-import com.br.helpdesk.entity.ChangeStatus;
-import com.br.helpdesk.entity.StatusEnum;
-import com.br.helpdesk.entity.Ticket;
-import com.br.helpdesk.entity.Usuario;
+import com.br.helpdesk.entity.*;
 import com.br.helpdesk.security.jwt.JwtTokenUtil;
 import com.br.helpdesk.service.TicketService;
 import com.br.helpdesk.service.UsuarioService;
@@ -104,7 +101,7 @@ public class TicketController {
 
     @GetMapping(value = "/{id}")
     @PreAuthorize("hasAnyRole('CUSTOMER','TECHNICIAN')")
-    public ResponseEntity<Response<Ticket>> findById(@PathVariable String id) {
+    public ResponseEntity<Response<Ticket>> findById(@PathVariable("id") String id) {
         Response<Ticket> ticketResponse = new Response<>();
         Optional<Ticket> ticketFind = ticketService.findById(id);
         if(ticketFind == null || ticketFind.get() == null){
@@ -122,8 +119,8 @@ public class TicketController {
     }
 
     @DeleteMapping(value = "/{id}")
-    @PreAuthorize("hasAnyRole('CUSTOMER','TECHNICIAN')")
-    public ResponseEntity<Response<String>> delete(@PathVariable String id) {
+    @PreAuthorize("hasAnyRole('CUSTOMER')")
+    public ResponseEntity<Response<String>> delete(@PathVariable("id") String id) {
         Response<String> ticketResponse = new Response<>();
         Optional<Ticket> ticketFind = ticketService.findById(id);
         if(ticketFind == null || ticketFind.get() == null){
@@ -145,9 +142,15 @@ public class TicketController {
 
     @GetMapping(value = "/{page}/{count}")
     @PreAuthorize("hasAnyRole('CUSTOMER','TECHNICIAN')")
-    public ResponseEntity<Response<Page<Ticket>>> listTicket(@PathVariable int page, @PathVariable int count) {
+    public ResponseEntity<Response<Page<Ticket>>> listTicket(HttpServletRequest request,@PathVariable("page") int page, @PathVariable("count") int count) {
         Response<Page<Ticket>> ticketResponse = new Response<>();
-        Page<Ticket> tickets = ticketService.listTicket(page, count);
+        Usuario usuario = userFromRequest(request);
+        Page<Ticket> tickets = null;
+        if(ProfileEnum.ROLE_TECHNICIAN.equals(usuario.getProfile())){
+            tickets = ticketService.listTicket(page, count);
+        }else if(ProfileEnum.ROLE_TECHNICIAN.equals(usuario.getProfile())){
+            tickets = ticketService.findByCurrentUser(page, count,usuario.getId());
+        }
         ticketResponse.setData(tickets);
         return ResponseEntity.ok(ticketResponse);
     }
