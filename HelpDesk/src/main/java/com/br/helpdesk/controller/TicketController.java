@@ -155,6 +155,41 @@ public class TicketController {
         return ResponseEntity.ok(ticketResponse);
     }
 
+    @GetMapping(value = "/{page}/{count}/{titulo}/{status}/{priority}/{number}/{assigned}")
+    @PreAuthorize("hasAnyRole('CUSTOMER','TECHNICIAN')")
+    public ResponseEntity<Response<Page<Ticket>>> findByParams(HttpServletRequest request,
+                                                               @PathVariable("page") int page,
+                                                               @PathVariable("count") int count,
+                                                               @PathVariable("titulo") String titulo,
+                                                               @PathVariable("status") String status,
+                                                               @PathVariable("priority") String priority,
+                                                               @PathVariable("number") Integer number,
+                                                               @PathVariable("assigned") boolean assigned) {
+        Response<Page<Ticket>> ticketResponse = new Response<>();
+        Usuario usuario = userFromRequest(request);
+
+        Page<Ticket> tickets = null;
+        titulo = titulo.equals("uninformed") ? "" :titulo;
+        priority = priority.equals("uninformed") ? "" :priority;
+        status = status.equals("uninformed") ? "" :status;
+
+        if(number > 0){
+            tickets = ticketService.findByNumber(page, count, number);
+        }else {
+             if (ProfileEnum.ROLE_TECHNICIAN.equals(usuario.getProfile())) {
+                 if(assigned) {
+                     tickets = ticketService.findByParametersAndAssignedUser(page, count, titulo, status, priority, usuario.getId());
+                 }else{
+                     tickets = ticketService.findByParameters(page, count, titulo, status, priority);
+                 }
+            } else if (ProfileEnum.ROLE_CUSTOMER.equals(usuario.getProfile())) {
+                tickets = ticketService.findByParametersAndCurrentUser(page, count, titulo, status, priority, usuario.getId());
+            }
+        }
+        ticketResponse.setData(tickets);
+        return ResponseEntity.ok(ticketResponse);
+    }
+
     private void validateCreateTicket(Ticket ticket, BindingResult result){
         if(ticket.getTitulo() == null){
             result.addError(new ObjectError("User", "titulo no Information"));
