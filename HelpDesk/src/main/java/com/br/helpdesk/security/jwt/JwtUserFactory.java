@@ -4,7 +4,6 @@ import com.br.helpdesk.entity.ProfileEnum;
 import com.br.helpdesk.entity.Usuario;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.web.authentication.switchuser.SwitchUserGrantedAuthority;
 
 import java.util.ArrayList;
 import java.util.List;
