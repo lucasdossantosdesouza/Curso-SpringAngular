@@ -233,8 +233,7 @@ public class TicketController {
     }
     @GetMapping("/summary")
     @PreAuthorize("hasAnyRole('CUSTOMER','TECHNICIAN')")
-    public ResponseEntity<Response<Summary>> findSummary(HttpServletRequest request,
-                                                         BindingResult result){
+    public ResponseEntity<Response<Summary>> findSummary(){
         AtomicReference<Integer> amountNew = new AtomicReference<>(0);
         AtomicReference<Integer> amountAssigned = new AtomicReference<>(0);
         AtomicReference<Integer> amountResolved = new AtomicReference<>(0);
