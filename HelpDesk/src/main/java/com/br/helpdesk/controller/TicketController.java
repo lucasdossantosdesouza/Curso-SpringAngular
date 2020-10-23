@@ -1,6 +1,7 @@
 package com.br.helpdesk.controller;
 
 import com.br.helpdesk.api.response.Response;
+import com.br.helpdesk.entity.ChangeStatus;
 import com.br.helpdesk.entity.StatusEnum;
 import com.br.helpdesk.entity.Ticket;
 import com.br.helpdesk.entity.Usuario;
@@ -110,6 +111,12 @@ public class TicketController {
             ticketResponse.getErrors().add("Register not found id: "+id);
             return ResponseEntity.badRequest().body(ticketResponse);
         }
+        Iterable<ChangeStatus> changeStatuses = ticketService.listChangeStatus(ticketFind.get().getId());
+        changeStatuses.forEach(changeStatus -> {
+            changeStatus.setTicket(null);
+            ticketFind.get().getChangeStatus().add(changeStatus);
+        });
+
         ticketResponse.setData(ticketFind.get());
         return ResponseEntity.ok(ticketResponse);
     }
