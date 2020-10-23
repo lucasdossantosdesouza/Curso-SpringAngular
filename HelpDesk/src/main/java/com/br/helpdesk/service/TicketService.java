@@ -22,4 +22,5 @@ public interface TicketService {
     Iterable<Ticket> findAll();
     Page<Ticket> findByParametersAndAssignedUser(int page, int count,String titulo, String status, String priority, String assignedUser);
 
+    Integer generatedNumber();
 }

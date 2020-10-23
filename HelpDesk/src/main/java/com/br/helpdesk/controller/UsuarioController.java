@@ -22,10 +22,10 @@ import java.util.Optional;
 public class UsuarioController {
 
     @Autowired
-    UsuarioService usuarioService;
+    private UsuarioService usuarioService;
 
     @Autowired
-    PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     @PostMapping
     @PreAuthorize("hasAnyRole('ADMIN')")
@@ -41,7 +41,7 @@ public class UsuarioController {
                 return ResponseEntity.badRequest().body(usuarioResponse);
             }
             usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
-            Usuario usuarioPersist = (Usuario)usuarioService.createOrUpdate(usuario);
+            Usuario usuarioPersist = usuarioService.createOrUpdate(usuario);
             usuarioResponse.setData(usuarioPersist);
         }catch (DuplicateKeyException de){
             usuarioResponse.getErrors().add("Email already registred");
@@ -68,7 +68,7 @@ public class UsuarioController {
                 return ResponseEntity.badRequest().body(usuarioResponse);
             }
             usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
-            Usuario usuarioPersist = (Usuario)usuarioService.createOrUpdate(usuario);
+            Usuario usuarioPersist = usuarioService.createOrUpdate(usuario);
             usuarioResponse.setData(usuarioPersist);
         }catch (Exception e){
             usuarioResponse.getErrors().add(e.getMessage());
@@ -82,7 +82,7 @@ public class UsuarioController {
     @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<Response<Usuario>> findById(@PathVariable String id) {
         Response<Usuario> usuarioResponse = new Response<>();
-        Optional<Usuario> usuarioFind = (Optional<Usuario>) usuarioService.findById(id);
+        Optional<Usuario> usuarioFind = usuarioService.findById(id);
         if(usuarioFind == null || usuarioFind.get() == null){
             usuarioResponse.getErrors().add("Register not found id: "+id);
             return ResponseEntity.badRequest().body(usuarioResponse);
@@ -95,7 +95,7 @@ public class UsuarioController {
     @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<Response<String>> delete(@PathVariable String id) {
         Response<String> usuarioResponse = new Response<>();
-        Optional<Usuario> usuarioFind = (Optional<Usuario>) usuarioService.findById(id);
+        Optional<Usuario> usuarioFind = usuarioService.findById(id);
         if(usuarioFind == null || usuarioFind.get() == null){
             usuarioResponse.getErrors().add("Register not found id: "+id);
             return ResponseEntity.badRequest().body(usuarioResponse);
