@@ -231,7 +231,7 @@ public class TicketController {
 
         return ResponseEntity.ok(ticketResponse);
     }
-    @GetMapping("/sumary")
+    @GetMapping("/summary")
     @PreAuthorize("hasAnyRole('CUSTOMER','TECHNICIAN')")
     public ResponseEntity<Response<Summary>> findSummary(HttpServletRequest request,
                                                          BindingResult result){
