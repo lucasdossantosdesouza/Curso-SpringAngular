@@ -13,8 +13,7 @@ import java.io.IOException;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class SimpleCorsFilter implements Filter {
 
-//  @Autowired
-//  private AlgamoneyApiProperty algamoneyApiProperty;
+
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
