@@ -46,7 +46,7 @@ public class TicketController {
                         ticketResponse.getErrors().add(objectError.getDefaultMessage()));
                 return ResponseEntity.badRequest().body(ticketResponse);
             }
-            ticket.setStatus(StatusEnum.getStatus("New"));
+            //ticket.setStatus(StatusEnum.getStatus("New"));
             ticket.setData(new Date());
             ticket.setNumber(ticketService.generatedNumber());
             ticket.setUsuario(userFromRequest(request));
