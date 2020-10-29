@@ -50,6 +50,7 @@ public class TicketController {
             ticket.setData(new Date());
             ticket.setNumber(ticketService.generatedNumber());
             ticket.setUsuario(userFromRequest(request));
+            ticket.setTitulo(ticket.getTitulo().toUpperCase());
             Ticket ticketPersist = ticketService.createOrUpdate(ticket);
             ticketResponse.setData(ticketPersist);
         }catch (DuplicateKeyException de){
@@ -87,6 +88,7 @@ public class TicketController {
                 ticket.setData(ticketFind.get().getData());
                 ticket.setNumber(ticketFind.get().getNumber());
                 ticket.setUsuario(ticketFind.get().getUsuario());
+                ticket.setTitulo(ticket.getTitulo().toUpperCase());
                 if(ticketFind.get().getAssigneredUser() != null){
                     ticket.setAssigneredUser(ticketFind.get().getAssigneredUser());
                 }
@@ -172,7 +174,7 @@ public class TicketController {
         Usuario usuario = userFromRequest(request);
 
         Page<Ticket> tickets = null;
-        titulo = titulo.equals("uninformed") ? "" :titulo;
+        titulo = titulo.equals("uninformed") ? "" :titulo.toUpperCase();
         priority = priority.equals("uninformed") ? "" :priority;
         status = status.equals("uninformed") ? "" :status;
 
