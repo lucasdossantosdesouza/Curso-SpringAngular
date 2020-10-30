@@ -218,6 +218,7 @@ public class TicketController {
             if(ticketFind != null) {
                 ticketFind.get().setStatus(StatusEnum.getStatus(status));
                 if(status.equals("Assigned")){
+                    ticketFind.get().setAssigneredUser(new Usuario());
                     ticketFind.get().setAssigneredUser(userFromRequest(request));
                 }
                 Ticket ticketPersist = ticketService.createOrUpdate(ticketFind.get());
