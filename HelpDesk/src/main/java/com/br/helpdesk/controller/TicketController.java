@@ -16,6 +16,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
@@ -113,8 +114,10 @@ public class TicketController {
             return ResponseEntity.badRequest().body(ticketResponse);
         }
         Iterable<ChangeStatus> changeStatuses = ticketService.listChangeStatus(ticketFind.get().getId());
+        ticketFind.get().setChangeStatus(new ArrayList<>());
         changeStatuses.forEach(changeStatus -> {
             changeStatus.setTicket(null);
+
             ticketFind.get().getChangeStatus().add(changeStatus);
         });
 
@@ -217,7 +220,7 @@ public class TicketController {
                 if(status.equals("Assigned")){
                     ticketFind.get().setAssigneredUser(userFromRequest(request));
                 }
-                Ticket ticketPersist = ticketService.createOrUpdate(ticket);
+                Ticket ticketPersist = ticketService.createOrUpdate(ticketFind.get());
                 ChangeStatus changeStatus = new ChangeStatus();
                 changeStatus.setUsuario(userFromRequest(request));
                 changeStatus.setData(new Date());
