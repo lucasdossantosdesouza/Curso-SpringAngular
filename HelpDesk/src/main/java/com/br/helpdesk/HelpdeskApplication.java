@@ -23,7 +23,7 @@ public class HelpdeskApplication {
     }
     public void initUsers(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder){
         Usuario usuario = new Usuario();
-        usuario.setEmail("lucasdossantosdesouza@gmail.com");
+        usuario.setEmail("admin@admin.com");
         usuario.setPassword(passwordEncoder.encode("123456"));
         usuario.setProfile(ProfileEnum.ROLE_ADMIN);
 
