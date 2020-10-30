@@ -70,13 +70,13 @@ public class TicketServiceImp implements TicketService {
     @Override
     public Page<Ticket> findByParameters(int page, int count, String titulo, String status, String priority) {
         Pageable pageable = PageRequest.of(page,count);
-        return ticketRepository.findByTituloAndStatusAndPriorityOrderByDataDesc(titulo, status, priority, pageable);
+        return ticketRepository.findByTituloIgnoreCaseContainingAndStatusContainingAndPriorityContainingOrderByDataDesc(titulo, status, priority, pageable);
     }
 
     @Override
     public Page<Ticket> findByParametersAndCurrentUser(int page, int count, String titulo, String status, String priority, String idUsuario) {
         Pageable pageable = PageRequest.of(page,count);
-        return ticketRepository.findByTituloAndStatusAndPriorityAndUsuarioIdOrderByDataDesc(titulo, status, priority, pageable, idUsuario);
+        return ticketRepository.findByTituloIgnoreCaseContainingAndStatusContainingAndPriorityContainingAndUsuarioIdOrderByDataDesc(titulo, status, priority, pageable, idUsuario);
     }
 
     @Override
@@ -93,6 +93,6 @@ public class TicketServiceImp implements TicketService {
     @Override
     public Page<Ticket> findByParametersAndAssignedUser(int page, int count, String titulo, String status, String priority, String assignedUser) {
         Pageable pageable = PageRequest.of(page,count);
-        return ticketRepository.findByTituloAndStatusAndPriorityAndAssigneredUserIdOrderByDataDesc(titulo, status, priority, pageable,assignedUser);
+        return ticketRepository.findByTituloIgnoreCaseContainingAndStatusContainingAndPriorityContainingAndAssigneredUserIdOrderByDataDesc(titulo, status, priority, pageable,assignedUser);
     }
 }
