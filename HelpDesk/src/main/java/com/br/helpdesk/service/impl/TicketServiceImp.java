@@ -1,7 +1,6 @@
 package com.br.helpdesk.service.impl;
 
 import com.br.helpdesk.entity.ChangeStatus;
-import com.br.helpdesk.entity.StatusEnum;
 import com.br.helpdesk.entity.Ticket;
 import com.br.helpdesk.repository.ChangeStatusRepository;
 import com.br.helpdesk.repository.TicketRepository;
@@ -12,7 +11,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.Optional;
 import java.util.Random;
 

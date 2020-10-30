@@ -1,7 +1,7 @@
 package com.br.helpdesk.controller;
 
-import com.br.helpdesk.api.response.Response;
 import com.br.helpdesk.api.dto.Summary;
+import com.br.helpdesk.api.response.Response;
 import com.br.helpdesk.entity.*;
 import com.br.helpdesk.security.jwt.JwtTokenUtil;
 import com.br.helpdesk.service.TicketService;
