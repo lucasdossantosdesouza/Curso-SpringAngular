@@ -37,6 +37,8 @@ public class Ticket {
     @Transient
     private List<ChangeStatus> changeStatus;
 
+    private Date dataAgendamento;
+
     public String getId() {
         return id;
     }
@@ -123,5 +125,13 @@ public class Ticket {
 
     public void setChangeStatus(List<ChangeStatus> changeStatus) {
         this.changeStatus = changeStatus;
+    }
+
+    public Date getDataAgendamento() {
+        return dataAgendamento;
+    }
+
+    public void setDataAgendamento(Date dataAgendamento) {
+        this.dataAgendamento = dataAgendamento;
     }
 }
