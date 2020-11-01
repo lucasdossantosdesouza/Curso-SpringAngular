@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6a5ee90a-0a99-4e59-9e23-41217af9b37e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/HelpdeskApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/api/dto/Summary.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/api/response/Response.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/controller/TicketController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/controller/UsuarioController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/entity/ChangeStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/entity/PriorityEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/entity/ProfileEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/entity/StatusEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/entity/Ticket.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/entity/Usuario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/repository/ChangeStatusRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/repository/TicketRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/repository/UsuarioRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/security/config/SimpleCorsFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/security/config/WebSecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/security/controller/AuthenticationRestController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/security/jwt/JwtAuthenticationEntryPoint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/security/jwt/JwtAuthenticationRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/security/jwt/JwtAuthenticationTokenFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/security/jwt/JwtTokenUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/security/jwt/JwtUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/security/jwt/JwtUserFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/security/model/CurrentUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/service/ChangeStatusService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/service/TicketService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/service/UsuarioService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/service/impl/ChangeStatusServiceImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/service/impl/JwtUserDetailServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/service/impl/TicketServiceImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/service/impl/UsuarioServiceImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/helpdesk/HelpdeskApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Enum" />
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Users\farin\.m2\wrapper\dists\apache-maven-3.6.3-bin\1iopthnavndlasol9gbrbg6bf2\apache-maven-3.6.3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1jEjMUFqReqm6Oow33i1RiXmFqa" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="spring.boot" />
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.br.helpdesk.dto" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HelpdeskApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="HelpDesk" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.br.helpdesk.HelpdeskApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6a5ee90a-0a99-4e59-9e23-41217af9b37e" name="Default Changelist" comment="" />
+      <created>1603376098745</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1603376098745</updated>
+      <workItem from="1603376100578" duration="34042000" />
+      <workItem from="1603424529713" duration="5265000" />
+      <workItem from="1603464722833" duration="13309000" />
+      <workItem from="1603538004468" duration="379000" />
+      <workItem from="1603584900649" duration="145000" />
+      <workItem from="1603744680934" duration="3956000" />
+      <workItem from="1603766103972" duration="3216000" />
+      <workItem from="1603807477844" duration="8265000" />
+      <workItem from="1603854707099" duration="2231000" />
+      <workItem from="1603889791747" duration="4075000" />
+      <workItem from="1603942457608" duration="1141000" />
+      <workItem from="1603985730973" duration="584000" />
+      <workItem from="1604002835853" duration="4380000" />
+      <workItem from="1604025349236" duration="6567000" />
+      <workItem from="1604078775078" duration="7589000" />
+      <workItem from="1604150036468" duration="1456000" />
+      <workItem from="1604234848646" duration="6100000" />
+    </task>
+    <task id="LOCAL-00001" summary="projeto helpdesk curso spring angular">
+      <created>1603376359195</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1603376359195</updated>
+    </task>
+    <task id="LOCAL-00002" summary="projeto helpdesk curso spring angular">
+      <created>1603376376637</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1603376376637</updated>
+    </task>
+    <task id="LOCAL-00003" summary="projeto helpdesk curso spring angular: cirando classes e enums">
+      <created>1603377718460</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1603377718460</updated>
+    </task>
+    <task id="LOCAL-00004" summary="projeto helpdesk curso spring angular: cirando classes e enums">
+      <created>1603381758352</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1603381758352</updated>
+    </task>
+    <task id="LOCAL-00005" summary="projeto helpdesk curso spring angular: cirando repositorys, services e controller">
+      <created>1603381922865</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1603381922865</updated>
+    </task>
+    <task id="LOCAL-00006" summary="projeto helpdesk curso spring angular: cirando repositorys, services e controller">
+      <created>1603382006125</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1603382006125</updated>
+    </task>
+    <task id="LOCAL-00007" summary="projeto helpdesk curso spring angular: cirando repositorys, services e controller">
+      <created>1603382668416</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1603382668416</updated>
+    </task>
+    <task id="LOCAL-00008" summary="projeto helpdesk curso spring angular: cirando repositorys, services e controller">
+      <created>1603383074791</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1603383074791</updated>
+    </task>
+    <task id="LOCAL-00009" summary="projeto helpdesk curso spring angular: cirando repositorys, services e controller">
+      <created>1603383255590</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1603383255590</updated>
+    </task>
+    <task id="LOCAL-00010" summary="projeto helpdesk curso spring angular: cirando repositorys, services e controller">
+      <created>1603386873909</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1603386873909</updated>
+    </task>
+    <task id="LOCAL-00011" summary="projeto helpdesk curso spring angular: cirando repositorys, services e controller">
+      <created>1603386904790</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1603386904790</updated>
+    </task>
+    <task id="LOCAL-00012" summary="projeto helpdesk curso spring angular: cirando repositorys, services e controller">
+      <created>1603387470127</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1603387470127</updated>
+    </task>
+    <task id="LOCAL-00013" summary="projeto helpdesk curso spring angular: cirando repositorys, services e controller">
+      <created>1603387919975</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1603387919975</updated>
+    </task>
+    <task id="LOCAL-00014" summary="projeto helpdesk curso spring angular: cirando repositorys, services e controller">
+      <created>1603387958057</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1603387958057</updated>
+    </task>
+    <task id="LOCAL-00015" summary="projeto helpdesk curso spring angular: security jwt token">
+      <created>1603388731178</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1603388731178</updated>
+    </task>
+    <task id="LOCAL-00016" summary="projeto helpdesk curso spring angular: security jwt token">
+      <created>1603389782225</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1603389782225</updated>
+    </task>
+    <task id="LOCAL-00017" summary="projeto helpdesk curso spring angular: security jwt token">
+      <created>1603393616423</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1603393616423</updated>
+    </task>
+    <task id="LOCAL-00018" summary="projeto helpdesk curso spring angular: security jwt token">
+      <created>1603394011441</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1603394011441</updated>
+    </task>
+    <task id="LOCAL-00019" summary="projeto helpdesk curso spring angular: security jwt token">
+      <created>1603394072245</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1603394072245</updated>
+    </task>
+    <task id="LOCAL-00020" summary="projeto helpdesk curso spring angular: security jwt token">
+      <created>1603394405769</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1603394405769</updated>
+    </task>
+    <task id="LOCAL-00021" summary="projeto helpdesk curso spring angular: security jwt token">
+      <created>1603397988533</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1603397988533</updated>
+    </task>
+    <task id="LOCAL-00022" summary="projeto helpdesk curso spring angular: security jwt token">
+      <created>1603402231561</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1603402231561</updated>
+    </task>
+    <task id="LOCAL-00023" summary="projeto helpdesk curso spring angular: security jwt token">
+      <created>1603408502645</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1603408502645</updated>
+    </task>
+    <task id="LOCAL-00024" summary="projeto helpdesk curso spring angular: security jwt token">
+      <created>1603409165001</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1603409165001</updated>
+    </task>
+    <task id="LOCAL-00025" summary="projeto helpdesk curso spring angular: security jwt token">
+      <created>1603410847958</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1603410847959</updated>
+    </task>
+    <task id="LOCAL-00026" summary="projeto helpdesk curso spring angular: security jwt token">
+      <created>1603411517333</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1603411517333</updated>
+    </task>
+    <task id="LOCAL-00027" summary="projeto helpdesk curso spring angular: security jwt token">
+      <created>1603413426638</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1603413426638</updated>
+    </task>
+    <task id="LOCAL-00028" summary="projeto helpdesk curso spring angular: implementando services e controllers">
+      <created>1603426582352</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1603426582352</updated>
+    </task>
+    <task id="LOCAL-00029" summary="projeto helpdesk curso spring angular: implementando services e controllers">
+      <created>1603429099176</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1603429099176</updated>
+    </task>
+    <task id="LOCAL-00030" summary="projeto helpdesk curso spring angular: implementando services e controllers e testando UsuarioController">
+      <created>1603429775012</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1603429775012</updated>
+    </task>
+    <task id="LOCAL-00031" summary="projeto helpdesk curso spring angular: implementando services e controllers e testando TicketController">
+      <created>1603468216586</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1603468216586</updated>
+    </task>
+    <task id="LOCAL-00032" summary="projeto helpdesk curso spring angular: implementando services e controllers e testando TicketController">
+      <created>1603468527747</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1603468527747</updated>
+    </task>
+    <task id="LOCAL-00033" summary="projeto helpdesk curso spring angular: implementando services e controllers e testando TicketController">
+      <created>1603469360455</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1603469360455</updated>
+    </task>
+    <task id="LOCAL-00034" summary="projeto helpdesk curso spring angular: implementando services e controllers e testando TicketController">
+      <created>1603475628419</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1603475628419</updated>
+    </task>
+    <task id="LOCAL-00035" summary="projeto helpdesk curso spring angular: implementando services e controllers e testando TicketController">
+      <created>1603477493102</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1603477493102</updated>
+    </task>
+    <task id="LOCAL-00036" summary="projeto helpdesk curso spring angular: implementando services e controllers e testando TicketController">
+      <created>1603483938603</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1603483938603</updated>
+    </task>
+    <task id="LOCAL-00037" summary="projeto helpdesk curso spring angular: implementando services e controllers e testando TicketController">
+      <created>1603484627223</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1603484627223</updated>
+    </task>
+    <task id="LOCAL-00038" summary="projeto helpdesk curso spring angular: implementando services e controllers e testando TicketController">
+      <created>1603484662166</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1603484662166</updated>
+    </task>
+    <task id="LOCAL-00039" summary="projeto helpdesk curso spring angular: implementando services e controllers e testando TicketController">
+      <created>1603484925207</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1603484925207</updated>
+    </task>
+    <task id="LOCAL-00040" summary="projeto helpdesk curso spring angular: implementando services e controllers e testando TicketController">
+      <created>1603809559256</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1603809559258</updated>
+    </task>
+    <task id="LOCAL-00041" summary="projeto helpdesk curso spring angular: implementando services e controllers e testando TicketController">
+      <created>1603809799589</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1603809799589</updated>
+    </task>
+    <task id="LOCAL-00042" summary="uppercase no titulo do ticket">
+      <created>1604012141215</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1604012141215</updated>
+    </task>
+    <task id="LOCAL-00043" summary="uppercase no titulo do ticket">
+      <created>1604029384407</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1604029384407</updated>
+    </task>
+    <task id="LOCAL-00044" summary="ajuste consulta por parametros do ticket">
+      <created>1604029872062</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1604029872062</updated>
+    </task>
+    <task id="LOCAL-00045" summary="ajuste imports">
+      <created>1604030013185</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1604030013185</updated>
+    </task>
+    <task id="LOCAL-00046" summary="ajuste imports">
+      <created>1604086160979</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1604086160979</updated>
+    </task>
+    <task id="LOCAL-00047" summary="ajuste assigneduser">
+      <created>1604087097152</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1604087097152</updated>
+    </task>
+    <task id="LOCAL-00048" summary="criando data de agendamento">
+      <created>1604152945292</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1604152945292</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="projeto helpdesk curso spring angular" />
+    <MESSAGE value="projeto helpdesk curso spring angular: cirando classes e enums" />
+    <MESSAGE value="projeto helpdesk curso spring angular: cirando repositorys, services e controller" />
+    <MESSAGE value="projeto helpdesk curso spring angular: security jwt token" />
+    <MESSAGE value="projeto helpdesk curso spring angular: implementando services e controllers" />
+    <MESSAGE value="projeto helpdesk curso spring angular: implementando services e controllers e testando UsuarioController" />
+    <MESSAGE value="projeto helpdesk curso spring angular: implementando services e controllers e testando TicketController" />
+    <MESSAGE value="uppercase no titulo do ticket" />
+    <MESSAGE value="ajuste consulta por parametros do ticket" />
+    <MESSAGE value="ajuste imports" />
+    <MESSAGE value="ajuste assigneduser" />
+    <MESSAGE value="criando data de agendamento" />
+    <option name="LAST_COMMIT_MESSAGE" value="criando data de agendamento" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="266" y="143" key="#Inspections" timestamp="1603396931198">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state x="266" y="143" key="#Inspections/0.0.1280.930@0.0.1280.930" timestamp="1603396931198" />
+    <state x="94" y="119" width="1092" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603394332748">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state x="94" y="119" width="1092" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.930@0.0.1280.930" timestamp="1603394332748" />
+    <state x="712" y="172" key="#com.intellij.ide.util.MemberChooser" timestamp="1604236401848">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state x="712" y="172" key="#com.intellij.ide.util.MemberChooser/0.0.1280.930@0.0.1280.930" timestamp="1604236401848" />
+    <state x="344" y="241" key="#com.intellij.refactoring.encapsulateFields.EncalpsulateFieldsDialog" timestamp="1603395684708">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state x="344" y="241" key="#com.intellij.refactoring.encapsulateFields.EncalpsulateFieldsDialog/0.0.1280.930@0.0.1280.930" timestamp="1603395684708" />
+    <state x="218" y="389" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1603807789682">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state x="218" y="389" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1280.930@0.0.1280.930" timestamp="1603807789682" />
+    <state x="418" y="301" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog" timestamp="1604012475277">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state x="418" y="301" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog/0.0.1280.930@0.0.1280.930" timestamp="1604012475277" />
+    <state x="370" y="211" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604238153704">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state x="370" y="211" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.930@0.0.1280.930" timestamp="1604238153704" />
+    <state x="395" y="167" key="#xdebugger.evaluate" timestamp="1603483549778">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state x="395" y="167" key="#xdebugger.evaluate/0.0.1280.930@0.0.1280.930" timestamp="1603483549778" />
+    <state x="71" y="33" key="CommitChangelistDialog2" timestamp="1604152943273">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state x="71" y="33" key="CommitChangelistDialog2/0.0.1280.930@0.0.1280.930" timestamp="1604152943273" />
+    <state width="908" height="514" key="DebuggerActiveHint" timestamp="1604087462210">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state width="908" height="514" key="DebuggerActiveHint/0.0.1280.930@0.0.1280.930" timestamp="1604087462210" />
+    <state x="420" y="206" key="FileChooserDialogImpl" timestamp="1603409079782">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state x="420" y="206" key="FileChooserDialogImpl/0.0.1280.930@0.0.1280.930" timestamp="1603409079782" />
+    <state width="1237" height="304" key="GridCell.Tab.0.bottom" timestamp="1604241331543">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state width="1237" height="304" key="GridCell.Tab.0.bottom/0.0.1280.930@0.0.1280.930" timestamp="1604241331543" />
+    <state width="1237" height="304" key="GridCell.Tab.0.center" timestamp="1604241331543">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state width="1237" height="304" key="GridCell.Tab.0.center/0.0.1280.930@0.0.1280.930" timestamp="1604241331543" />
+    <state width="1237" height="304" key="GridCell.Tab.0.left" timestamp="1604241331543">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state width="1237" height="304" key="GridCell.Tab.0.left/0.0.1280.930@0.0.1280.930" timestamp="1604241331543" />
+    <state width="1237" height="304" key="GridCell.Tab.0.right" timestamp="1604241331543">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state width="1237" height="304" key="GridCell.Tab.0.right/0.0.1280.930@0.0.1280.930" timestamp="1604241331543" />
+    <state width="1237" height="304" key="GridCell.Tab.1.bottom" timestamp="1604241331543">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state width="1237" height="304" key="GridCell.Tab.1.bottom/0.0.1280.930@0.0.1280.930" timestamp="1604241331543" />
+    <state width="1237" height="304" key="GridCell.Tab.1.center" timestamp="1604241331543">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state width="1237" height="304" key="GridCell.Tab.1.center/0.0.1280.930@0.0.1280.930" timestamp="1604241331543" />
+    <state width="1237" height="304" key="GridCell.Tab.1.left" timestamp="1604241331543">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state width="1237" height="304" key="GridCell.Tab.1.left/0.0.1280.930@0.0.1280.930" timestamp="1604241331543" />
+    <state width="1237" height="304" key="GridCell.Tab.1.right" timestamp="1604241331543">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state width="1237" height="304" key="GridCell.Tab.1.right/0.0.1280.930@0.0.1280.930" timestamp="1604241331543" />
+    <state width="1237" height="304" key="GridCell.Tab.2.bottom" timestamp="1604241331544">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state width="1237" height="304" key="GridCell.Tab.2.bottom/0.0.1280.930@0.0.1280.930" timestamp="1604241331544" />
+    <state width="1237" height="304" key="GridCell.Tab.2.center" timestamp="1604241331543">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state width="1237" height="304" key="GridCell.Tab.2.center/0.0.1280.930@0.0.1280.930" timestamp="1604241331543" />
+    <state width="1237" height="304" key="GridCell.Tab.2.left" timestamp="1604241331543">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state width="1237" height="304" key="GridCell.Tab.2.left/0.0.1280.930@0.0.1280.930" timestamp="1604241331543" />
+    <state width="1237" height="304" key="GridCell.Tab.2.right" timestamp="1604241331544">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state width="1237" height="304" key="GridCell.Tab.2.right/0.0.1280.930@0.0.1280.930" timestamp="1604241331544" />
+    <state x="170" y="119" key="Maven.ArtifactSearchDialog" timestamp="1604236161856">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state x="170" y="119" key="Maven.ArtifactSearchDialog/0.0.1280.930@0.0.1280.930" timestamp="1604236161856" />
+    <state x="347" y="167" key="RollbackChangesDialog" timestamp="1603389765841">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state x="347" y="167" key="RollbackChangesDialog/0.0.1280.930@0.0.1280.930" timestamp="1603389765841" />
+    <state x="141" y="78" key="SettingsEditor" timestamp="1604236344190">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state x="141" y="78" key="SettingsEditor/0.0.1280.930@0.0.1280.930" timestamp="1604236344190" />
+    <state x="232" y="197" key="Vcs.Push.Dialog.v2" timestamp="1604152947237">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state x="232" y="197" key="Vcs.Push.Dialog.v2/0.0.1280.930@0.0.1280.930" timestamp="1604152947237" />
+    <state x="822" y="300" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1603398419270">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state x="822" y="300" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1280.930@0.0.1280.930" timestamp="1603398419270" />
+    <state x="172" y="193" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1603410103943">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state x="172" y="193" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.930@0.0.1280.930" timestamp="1603410103943" />
+    <state x="346" y="169" width="587" height="592" key="find.popup" timestamp="1603807972487">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state x="346" y="169" width="587" height="592" key="find.popup/0.0.1280.930@0.0.1280.930" timestamp="1603807972487" />
+    <state width="602" height="428" key="javadoc.popup" timestamp="1604011536916">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state width="602" height="428" key="javadoc.popup/0.0.1280.930@0.0.1280.930" timestamp="1604011536916" />
+    <state x="231" y="125" key="new project wizard" timestamp="1604240425428">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state x="231" y="125" key="new project wizard/0.0.1280.930@0.0.1280.930" timestamp="1604240425428" />
+    <state x="340" y="222" key="refactoring.ChangeSignatureDialog" timestamp="1603465810263">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state x="340" y="222" key="refactoring.ChangeSignatureDialog/0.0.1280.930@0.0.1280.930" timestamp="1603465810263" />
+    <state x="303" y="197" width="672" height="678" key="search.everywhere.popup" timestamp="1603744968983">
+      <screen x="0" y="0" width="1280" height="930" />
+    </state>
+    <state x="303" y="197" width="672" height="678" key="search.everywhere.popup/0.0.1280.930@0.0.1280.930" timestamp="1603744968983" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/br/helpdesk/controller/TicketController.java</url>
+          <line>175</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/br/helpdesk/service/impl/TicketServiceImp.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/br/helpdesk/controller/TicketController.java</url>
+          <line>207</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/br/helpdesk/controller/TicketController.java</url>
+          <line>219</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/br/helpdesk/swagger/config/SwaggerConfig.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="org.springframework.security.authentication.UsernamePasswordAuthenticationToken" memberName="credentials" />
+        <PinnedItemInfo parentTag="com.br.helpdesk.entity.Ticket" memberName="assigneredUser" />
+        <PinnedItemInfo parentTag="org.apache.catalina.connector.RequestFacade" memberName="request" />
+        <PinnedItemInfo parentTag="org.springframework.security.authentication.UsernamePasswordAuthenticationToken" memberName="authorities" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+</project>
