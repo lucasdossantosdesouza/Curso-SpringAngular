@@ -31,6 +31,7 @@ public class UsuarioController {
 
     @PostMapping
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @Operation(summary = "endpoint que insere um usuário", security = @SecurityRequirement(name = "Authorization"))
     public ResponseEntity<Response<Usuario>> create(HttpServletRequest request,
                                                     @RequestBody Usuario usuario,
                                                     BindingResult result){
@@ -58,6 +59,7 @@ public class UsuarioController {
 
     @PutMapping
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @Operation(summary = "endpoint que atualiza um usuário", security = @SecurityRequirement(name = "Authorization"))
     public ResponseEntity<Response<Usuario>> update(HttpServletRequest request,
                                                     @RequestBody Usuario usuario,
                                                     BindingResult result){
@@ -82,6 +84,7 @@ public class UsuarioController {
 
     @GetMapping(value = "/{id}")
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @Operation(summary = "endpoint que busca usuário por id", security = @SecurityRequirement(name = "Authorization"))
     public ResponseEntity<Response<Usuario>> findById(@PathVariable("id") String id) {
         Response<Usuario> usuarioResponse = new Response<>();
         Optional<Usuario> usuarioFind = usuarioService.findById(id);
@@ -95,6 +98,7 @@ public class UsuarioController {
 
     @DeleteMapping(value = "/{id}")
     @PreAuthorize("hasAnyRole('ADMIN')")
+    @Operation(summary = "endpoint que deleta um usuário", security = @SecurityRequirement(name = "Authorization"))
     public ResponseEntity<Response<String>> delete(@PathVariable("id") String id) {
         Response<String> usuarioResponse = new Response<>();
         Optional<Usuario> usuarioFind = usuarioService.findById(id);
@@ -108,7 +112,7 @@ public class UsuarioController {
 
     @GetMapping(value = "/{page}/{count}")
     @PreAuthorize("hasAnyRole('ADMIN')")
-    @Operation(summary = "mostrar todos usuarios", security = @SecurityRequirement(name = "Authorization"))
+    @Operation(summary = "endpoint que listas as tasks por página", security = @SecurityRequirement(name = "Authorization"))
     public ResponseEntity<Response<Page<Usuario>>> findAll(@PathVariable("page") int page, @PathVariable("count") int count) {
         Response<Page<Usuario>> usuarioResponse = new Response<>();
         Page<Usuario> usuarios = usuarioService.findAll(page, count);

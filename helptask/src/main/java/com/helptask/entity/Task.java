@@ -37,6 +37,9 @@ public class Task {
     @Transient
     private List<ChangeStatus> changeStatus;
 
+    @Transient
+    private List<Comentario> comentarios;
+
     private Date dataAgendamento;
 
     public String getId() {
@@ -133,5 +136,13 @@ public class Task {
 
     public void setDataAgendamento(Date dataAgendamento) {
         this.dataAgendamento = dataAgendamento;
+    }
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
     }
 }

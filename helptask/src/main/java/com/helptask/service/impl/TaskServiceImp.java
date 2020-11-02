@@ -50,13 +50,13 @@ public class TaskServiceImp implements TaskService {
     }
 
     @Override
-    public ChangeStatus createCahngesStatus(ChangeStatus changeStatus) {
+    public ChangeStatus createChangesStatus(ChangeStatus changeStatus) {
         return changeStatusRepository.save(changeStatus);
     }
 
     @Override
-    public Iterable<ChangeStatus> listChangeStatus(String idTicket) {
-        return changeStatusRepository.findByTicketIdOrderByDataDesc(idTicket);
+    public Iterable<ChangeStatus> listChangeStatus(String idTask) {
+        return changeStatusRepository.findByTaskIdOrderByDataDesc(idTask);
     }
 
     @Override

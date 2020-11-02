@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ChangeStatusRepository extends MongoRepository<ChangeStatus, String> {
 
-    Iterable<ChangeStatus> findByTicketIdOrderByDataDesc(String ticketId);
+    Iterable<ChangeStatus> findByTaskIdOrderByDataDesc(String taskId);
 }

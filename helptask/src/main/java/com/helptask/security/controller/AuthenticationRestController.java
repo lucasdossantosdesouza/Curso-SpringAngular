@@ -5,6 +5,8 @@ import com.helptask.security.jwt.JwtAuthenticationRequest;
 import com.helptask.security.jwt.JwtTokenUtil;
 import com.helptask.security.model.CurrentUser;
 import com.helptask.service.UsuarioService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +41,7 @@ public class AuthenticationRestController {
     private UsuarioService usuarioService;
 
     @PostMapping(value = "/api/auth")
+    @Operation(summary = "endpoint que gera o token", security = @SecurityRequirement(name = "Authorization"))
     public ResponseEntity<?> createAutenticationToken(@RequestBody JwtAuthenticationRequest jwtAuthenticationRequest) {
         final Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -55,6 +58,7 @@ public class AuthenticationRestController {
     }
 
     @PostMapping(value = "/api/refresh")
+    @Operation(summary = "endpoint que atualiza o token", security = @SecurityRequirement(name = "Authorization"))
     public ResponseEntity<?> refreshAutenticationToken(HttpServletRequest request) {
         final String token = request.getHeader("Authorization");
         String username = jwtTokenUtil.getUserNameFromToken(token);

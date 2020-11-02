@@ -13,7 +13,7 @@ public interface TaskService {
     Optional<Task> findById(String id);
     void delete(String id);
     Page<Task> listTasks(int page, int count);
-    ChangeStatus createCahngesStatus(ChangeStatus changeStatus);
+    ChangeStatus createChangesStatus(ChangeStatus changeStatus);
     Iterable<ChangeStatus> listChangeStatus(String idTicket);
     Page<Task> findByCurrentUser(int page, int count, String idUsuario);
     Page<Task> findByParameters(int page, int count, String titulo, String status, String priority);

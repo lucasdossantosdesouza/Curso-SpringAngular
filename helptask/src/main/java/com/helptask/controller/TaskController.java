@@ -39,7 +39,7 @@ public class TaskController {
 
     @PostMapping
     @PreAuthorize("hasAnyRole('CUSTOMER')")
-    @Operation(summary = "create ticket", security = @SecurityRequirement(name = "Authorization"))
+    @Operation(summary = "endpoint que insere uma task", security = @SecurityRequirement(name = "Authorization"))
     public ResponseEntity<Response<Task>> create(HttpServletRequest request, @RequestBody Task task,
                                                  BindingResult result){
         Response<Task> taskResponse = new Response<>();
@@ -76,6 +76,7 @@ public class TaskController {
 
     @PutMapping
     @PreAuthorize("hasAnyRole('CUSTOMER')")
+    @Operation(summary = "endpoint que atualiza uma task", security = @SecurityRequirement(name = "Authorization"))
     public ResponseEntity<Response<Task>> update(HttpServletRequest request, @RequestBody Task task,
                                                  BindingResult result){
         Response<Task> taskResponse = new Response<>();
@@ -109,6 +110,7 @@ public class TaskController {
 
     @GetMapping(value = "/{id}")
     @PreAuthorize("hasAnyRole('CUSTOMER','TECHNICIAN')")
+    @Operation(summary = "endpoint que busca uma task por id", security = @SecurityRequirement(name = "Authorization"))
     public ResponseEntity<Response<Task>> findById(@PathVariable("id") String id) {
         Response<Task> taskResponse = new Response<>();
         Optional<Task> taskFind = taskService.findById(id);
@@ -130,6 +132,7 @@ public class TaskController {
 
     @DeleteMapping(value = "/{id}")
     @PreAuthorize("hasAnyRole('CUSTOMER')")
+    @Operation(summary = "endpoint que deleta uma task", security = @SecurityRequirement(name = "Authorization"))
     public ResponseEntity<Response<String>> delete(@PathVariable("id") String id) {
         Response<String> taskResponse = new Response<>();
         Optional<Task> ticketFind = taskService.findById(id);
@@ -143,7 +146,7 @@ public class TaskController {
 
     @GetMapping(value = "/")
     @PreAuthorize("hasAnyRole('CUSTOMER','TECHNICIAN')")
-    @Operation(summary = "mostrar todos tickets", security = @SecurityRequirement(name = "Authorization"))
+    @Operation(summary = "endpoint que mostra todos as tasks", security = @SecurityRequirement(name = "Authorization"))
     public ResponseEntity<Response<Iterable<Task>>> findAll() {
         Response<Iterable<Task>> taksResponse = new Response<>();
         Iterable<Task> tasks = taskService.findAll();
@@ -153,6 +156,7 @@ public class TaskController {
 
     @GetMapping(value = "/{page}/{count}")
     @PreAuthorize("hasAnyRole('CUSTOMER','TECHNICIAN')")
+    @Operation(summary = "endpoint que listas as tasks por página", security = @SecurityRequirement(name = "Authorization"))
     public ResponseEntity<Response<Page<Task>>> listTasks(HttpServletRequest request, @PathVariable("page") int page,
                                                            @PathVariable("count") int count) {
         Response<Page<Task>> tasksResponse = new Response<>();
@@ -168,6 +172,7 @@ public class TaskController {
     }
 
     @GetMapping(value = "/{page}/{count}/{titulo}/{status}/{priority}/{number}/{assigned}")
+    @Operation(summary = "endpoint que lista task(s) por parâmetros", security = @SecurityRequirement(name = "Authorization"))
     @PreAuthorize("hasAnyRole('CUSTOMER','TECHNICIAN')")
     public ResponseEntity<Response<Page<Task>>> findByParams(HttpServletRequest request,
                                                              @PathVariable("page") int page,
@@ -204,6 +209,7 @@ public class TaskController {
 
     @PutMapping("/{id}/{status}")
     @PreAuthorize("hasAnyRole('CUSTOMER','TECHNICIAN')")
+    @Operation(summary = "endpoint que muda o status da task", security = @SecurityRequirement(name = "Authorization"))
     public ResponseEntity<Response<Task>> changeStatus(HttpServletRequest request,
                                                        @PathVariable("status") String status,
                                                        @PathVariable("id") String id,
@@ -231,7 +237,7 @@ public class TaskController {
                 changeStatus.setData(new Date());
                 changeStatus.setStatusEnum(StatusEnum.getStatus(status));
                 changeStatus.setTicket(taskPersist);
-                taskService.createCahngesStatus(changeStatus);
+                taskService.createChangesStatus(changeStatus);
                 taskResponse.setData(taskPersist);
             }
         }catch (Exception e){
@@ -243,6 +249,7 @@ public class TaskController {
     }
     @GetMapping("/summary")
     @PreAuthorize("hasAnyRole('CUSTOMER','TECHNICIAN')")
+    @Operation(summary = "endpoint que da um resumo da quantidade de tasks abertas por status", security = @SecurityRequirement(name = "Authorization"))
     public ResponseEntity<Response<Summary>> findSummary(){
         AtomicReference<Integer> amountNew = new AtomicReference<>(0);
         AtomicReference<Integer> amountAssigned = new AtomicReference<>(0);
