@@ -42,6 +42,8 @@ public class Task {
 
     private Date dataAgendamento;
 
+    private Date tempoGasto;
+
     public String getId() {
         return id;
     }
@@ -144,5 +146,13 @@ public class Task {
 
     public void setComentarios(List<Comentario> comentarios) {
         this.comentarios = comentarios;
+    }
+
+    public Date getTempoGasto() {
+        return tempoGasto;
+    }
+
+    public void setTempoGasto(Date tempoGasto) {
+        this.tempoGasto = tempoGasto;
     }
 }
