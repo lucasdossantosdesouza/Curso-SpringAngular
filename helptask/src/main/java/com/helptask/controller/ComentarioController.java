@@ -48,7 +48,7 @@ public class ComentarioController {
                 return ResponseEntity.badRequest().body(comentarioResponse);
             }
             comentario.setUsuario(userFromRequest(request));
-            Comentario comentarioPersist = comentarioService.createOrUpdate(comentario);
+            Comentario comentarioPersist = comentarioService.createOrUpdate(comentarioService.buildInsereComentario(comentario));
             comentarioResponse.setData(comentarioPersist);
         }catch (DuplicateKeyException de){
             comentarioResponse.getErrors().add("Comentario already registred");

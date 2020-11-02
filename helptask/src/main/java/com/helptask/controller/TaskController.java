@@ -20,6 +20,9 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Optional;
 
 @RestController
@@ -144,7 +147,7 @@ public class TaskController {
         return ResponseEntity.ok(tasksResponse);
     }
 
-    @GetMapping(value = "/{page}/{count}/{titulo}/{status}/{priority}/{number}/{assigned}")
+    @GetMapping(value = "/{page}/{count}/{titulo}/{status}/{priority}/{number}/{dataAgendamento}/{assigned}")
     @Operation(summary = "endpoint que lista task(s) por parâmetros", security = @SecurityRequirement(name = "Authorization"))
     @PreAuthorize("hasAnyRole('CUSTOMER','TECHNICIAN')")
     public ResponseEntity<Response<Page<Task>>> findByParams(HttpServletRequest request,
@@ -154,7 +157,8 @@ public class TaskController {
                                                              @PathVariable("status") String status,
                                                              @PathVariable("priority") String priority,
                                                              @PathVariable("number") Integer number,
-                                                             @PathVariable("assigned") boolean assigned) {
+                                                             @PathVariable("dataAgendamento") String dataAgendamento,
+                                                             @PathVariable("assigned") boolean assigned) throws ParseException {
         Response<Page<Task>> taskResponse = new Response<>();
         Usuario usuario = userFromRequest(request);
 
@@ -162,7 +166,6 @@ public class TaskController {
         titulo = titulo.equals("uninformed") ? "" :titulo.toUpperCase();
         priority = priority.equals("uninformed") ? "" :priority;
         status = status.equals("uninformed") ? "" :status;
-
         if(number > 0){
             tasks = taskService.findByNumber(page, count, number);
         }else {

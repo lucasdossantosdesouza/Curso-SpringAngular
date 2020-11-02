@@ -12,6 +12,6 @@ public interface ComentarioService {
     Optional<Comentario> findById(String id);
     void delete(String id);
     Page<Comentario> findByTask(int page, int count,String idTask);
-
+    Comentario buildInsereComentario(Comentario comentario);
     Comentario buildComentarioUpdate(Optional<Comentario> comentarioFind, Comentario comentario);
 }

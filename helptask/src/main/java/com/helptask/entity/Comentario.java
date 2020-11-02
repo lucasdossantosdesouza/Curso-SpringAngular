@@ -4,6 +4,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
+
 @Document
 public class Comentario {
     @Id
@@ -16,6 +18,8 @@ public class Comentario {
 
     @DBRef(lazy = true)
     private Usuario usuario;
+
+    private Date data;
 
     public Comentario() {
     }
@@ -50,5 +54,13 @@ public class Comentario {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
     }
 }
