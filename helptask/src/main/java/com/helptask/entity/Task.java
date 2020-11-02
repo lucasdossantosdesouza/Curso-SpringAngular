@@ -42,7 +42,7 @@ public class Task {
 
     private Date dataAgendamento;
 
-    private Date tempoGasto;
+    private String tempoGasto;
 
     public String getId() {
         return id;
@@ -148,11 +148,11 @@ public class Task {
         this.comentarios = comentarios;
     }
 
-    public Date getTempoGasto() {
+    public String getTempoGasto() {
         return tempoGasto;
     }
 
-    public void setTempoGasto(Date tempoGasto) {
+    public void setTempoGasto(String tempoGasto) {
         this.tempoGasto = tempoGasto;
     }
 }
