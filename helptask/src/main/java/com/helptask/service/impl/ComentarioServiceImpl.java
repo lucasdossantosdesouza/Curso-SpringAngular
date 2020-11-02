@@ -4,6 +4,9 @@ import com.helptask.entity.Comentario;
 import com.helptask.repository.ComentarioRepositoy;
 import com.helptask.service.ComentarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -31,8 +34,9 @@ public class ComentarioServiceImpl implements ComentarioService {
     }
 
     @Override
-    public Iterable<Comentario> findByTask( String idTask) {
-         return comentarioRepositoy.findByTask(idTask);
+    public Page<Comentario> findByTask(int page, int count, String idTask) {
+        Pageable pageable= PageRequest.of(page,count);
+         return comentarioRepositoy.findByTask(pageable, idTask);
     }
 
     @Override

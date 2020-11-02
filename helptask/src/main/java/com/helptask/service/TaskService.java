@@ -2,7 +2,6 @@ package com.helptask.service;
 
 import com.helptask.api.dto.Summary;
 import com.helptask.entity.ChangeStatus;
-import com.helptask.entity.Comentario;
 import com.helptask.entity.Task;
 import com.helptask.entity.Usuario;
 import org.springframework.data.domain.Page;
@@ -18,7 +17,6 @@ public interface TaskService {
     Page<Task> listTasks(int page, int count);
     ChangeStatus createChangesStatus(ChangeStatus changeStatus);
     Task listChangeStatus(Task task);
-    Iterable<Comentario> listComentarios(String idTask);
     Page<Task> findByCurrentUser(int page, int count, String idUsuario);
     Page<Task> findByParameters(int page, int count, String titulo, String status, String priority);
     Page<Task> findByParametersAndCurrentUser(int page, int count, String titulo, String status, String priority, String idUsuario);

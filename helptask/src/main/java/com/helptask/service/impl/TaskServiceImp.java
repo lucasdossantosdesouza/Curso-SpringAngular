@@ -1,7 +1,10 @@
 package com.helptask.service.impl;
 
 import com.helptask.api.dto.Summary;
-import com.helptask.entity.*;
+import com.helptask.entity.ChangeStatus;
+import com.helptask.entity.StatusEnum;
+import com.helptask.entity.Task;
+import com.helptask.entity.Usuario;
 import com.helptask.repository.ChangeStatusRepository;
 import com.helptask.repository.ComentarioRepositoy;
 import com.helptask.repository.TaskRepository;
@@ -157,11 +160,6 @@ public class TaskServiceImp implements TaskService {
             taskFind.getChangeStatus().add(changeStatus);
         });
         return taskFind;
-    }
-
-    @Override
-    public Iterable<Comentario> listComentarios(String idTask) {
-        return comentarioRepositoy.findByTask(idTask);
     }
 
     @Override

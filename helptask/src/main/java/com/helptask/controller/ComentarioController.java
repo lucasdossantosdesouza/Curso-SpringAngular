@@ -1,4 +1,5 @@
 package com.helptask.controller;
+
 import com.helptask.api.response.Response;
 import com.helptask.entity.Comentario;
 import com.helptask.entity.Usuario;
@@ -9,6 +10,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
@@ -95,6 +97,17 @@ public class ComentarioController {
         }
         comentarioService.delete(comentarioFind.get().getId());
         return ResponseEntity.ok(new Response<String>());
+    }
+
+    @GetMapping(value = "/{page}/{count}/{idTask}")
+    @PreAuthorize("hasAnyRole('CUSTOMER','TECHNICIAN')")
+    @Operation(summary = "endpoint que busca comentarios pelo id da task", security = @SecurityRequirement(name = "Authorization"))
+    public ResponseEntity<Response<Page<Comentario>>> findByTaskId(@PathVariable("idTask") String idTask
+                                    ,@PathVariable("page") int page,@PathVariable("count") int count) {
+        Response<Page<Comentario>> comentarioResponse = new Response<>();
+        Page<Comentario> comentarios = comentarioService.findByTask(page, count,idTask);
+        comentarioResponse.setData(comentarios);
+        return ResponseEntity.ok(comentarioResponse);
     }
 
     private void validateComentario(Comentario comentario, BindingResult result){
