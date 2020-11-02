@@ -14,6 +14,9 @@ public class Comentario {
     @DBRef(lazy = true)
     private Task task;
 
+    @DBRef(lazy = true)
+    private Usuario usuario;
+
     public Comentario() {
     }
 
@@ -39,5 +42,13 @@ public class Comentario {
 
     public void setTask(Task task) {
         this.task = task;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

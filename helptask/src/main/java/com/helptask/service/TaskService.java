@@ -1,7 +1,10 @@
 package com.helptask.service;
 
+import com.helptask.api.dto.Summary;
 import com.helptask.entity.ChangeStatus;
+import com.helptask.entity.Comentario;
 import com.helptask.entity.Task;
+import com.helptask.entity.Usuario;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +17,8 @@ public interface TaskService {
     void delete(String id);
     Page<Task> listTasks(int page, int count);
     ChangeStatus createChangesStatus(ChangeStatus changeStatus);
-    Iterable<ChangeStatus> listChangeStatus(String idTicket);
+    Task listChangeStatus(Task task);
+    Iterable<Comentario> listComentarios(String idTask);
     Page<Task> findByCurrentUser(int page, int count, String idUsuario);
     Page<Task> findByParameters(int page, int count, String titulo, String status, String priority);
     Page<Task> findByParametersAndCurrentUser(int page, int count, String titulo, String status, String priority, String idUsuario);
@@ -22,4 +26,8 @@ public interface TaskService {
     Iterable<Task> findAll();
     Page<Task> findByParametersAndAssignedUser(int page, int count, String titulo, String status, String priority, String assignedUser);
     Integer generatedNumber();
+    Task buildTaskInsert(Task task);
+    Task buildTaskUpdate(Task task);
+    Task buildChangeStatus(Optional<Task> task, String status, Usuario usuario);
+    Summary buildSummary(Iterable<Task> tasks);
 }

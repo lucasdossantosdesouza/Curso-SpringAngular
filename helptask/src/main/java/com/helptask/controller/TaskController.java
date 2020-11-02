@@ -2,7 +2,9 @@ package com.helptask.controller;
 
 import com.helptask.api.dto.Summary;
 import com.helptask.api.response.Response;
-import com.helptask.entity.*;
+import com.helptask.entity.ProfileEnum;
+import com.helptask.entity.Task;
+import com.helptask.entity.Usuario;
 import com.helptask.security.jwt.JwtTokenUtil;
 import com.helptask.service.TaskService;
 import com.helptask.service.UsuarioService;
@@ -18,10 +20,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -44,18 +43,14 @@ public class TaskController {
                                                  BindingResult result){
         Response<Task> taskResponse = new Response<>();
         try {
-            validateCreateTicket(task, result);
+            validateCreateTask(task, result);
             if (result.hasErrors()) {
                 result.getAllErrors().forEach(objectError ->
                         taskResponse.getErrors().add(objectError.getDefaultMessage()));
                 return ResponseEntity.badRequest().body(taskResponse);
             }
-            //ticket.setStatus(StatusEnum.getStatus("New"));
-            task.setData(new Date());
-            task.setNumber(taskService.generatedNumber());
             task.setUsuario(userFromRequest(request));
-            task.setTitulo(task.getTitulo().toUpperCase());
-            Task taskPersist = taskService.createOrUpdate(task);
+            Task taskPersist = taskService.createOrUpdate(taskService.buildTaskInsert(task));
             taskResponse.setData(taskPersist);
         }catch (DuplicateKeyException de){
             taskResponse.getErrors().add("Ticket already registred");
@@ -68,12 +63,6 @@ public class TaskController {
         return ResponseEntity.ok(taskResponse);
     }
 
-    private Usuario userFromRequest(HttpServletRequest request) {
-        String token = request.getHeader("Authorization");
-        String email = jwtTokenUtil.getUserNameFromToken(token);
-        return usuarioService.findByEmail(email);
-    }
-
     @PutMapping
     @PreAuthorize("hasAnyRole('CUSTOMER')")
     @Operation(summary = "endpoint que atualiza uma task", security = @SecurityRequirement(name = "Authorization"))
@@ -81,27 +70,14 @@ public class TaskController {
                                                  BindingResult result){
         Response<Task> taskResponse = new Response<>();
         try {
-            validateUpdateTicket(task, result);
+            validateUpdateTask(task, result);
             if (result.hasErrors()) {
                 result.getAllErrors().forEach(objectError ->
                         taskResponse.getErrors().add(objectError.getDefaultMessage()));
                 return ResponseEntity.badRequest().body(taskResponse);
             }
-            Optional<Task> taskFind = taskService.findById(task.getId());
-            taskFind.ifPresent(task1 -> {
-                task.setStatus(task1.getStatus());
-                task.setData(task1.getData());
-                task.setNumber(task1.getNumber());
-                task.setUsuario(task1.getUsuario());
-                task.setTitulo(task.getTitulo().toUpperCase());
-                task.setDescription(task.getDescription());
-                task.setDataAgendamento(task.getDataAgendamento());
-                if( task1.getAssigneredUser() != null){
-                    task.setAssigneredUser(task1.getAssigneredUser());
-                }
-                Task taskPersist = taskService.createOrUpdate(task);
-                taskResponse.setData(taskPersist);
-            });
+            Task taskPersist = taskService.createOrUpdate(taskService.buildTaskUpdate(task));
+            taskResponse.setData(taskPersist);
         }catch (Exception e){
             taskResponse.getErrors().add(e.getMessage());
             return ResponseEntity.badRequest().body(taskResponse);
@@ -120,14 +96,10 @@ public class TaskController {
             taskResponse.getErrors().add("Register not found id: "+id);
             return ResponseEntity.badRequest().body(taskResponse);
         }
-        Iterable<ChangeStatus> changeStatuses = taskService.listChangeStatus(taskFind.get().getId());
-        taskFind.get().setChangeStatus(new ArrayList<>());
-        changeStatuses.forEach(changeStatus -> {
-            changeStatus.setTicket(null);
-            taskFind.get().getChangeStatus().add(changeStatus);
+        taskFind.ifPresent(task -> {
+            task = taskService.listChangeStatus(task);
+            taskResponse.setData(task);
         });
-
-        taskResponse.setData(taskFind.get());
         return ResponseEntity.ok(taskResponse);
     }
 
@@ -217,6 +189,7 @@ public class TaskController {
                                                        @RequestBody Task task,
                                                        BindingResult result){
         Response<Task> taskResponse = new Response<>();
+        Usuario usuario = userFromRequest(request);
         try {
             validateChangeStatus(id , status, result);
             if (result.hasErrors()) {
@@ -225,22 +198,7 @@ public class TaskController {
                 return ResponseEntity.badRequest().body(taskResponse);
             }
             Optional<Task> taskFind = taskService.findById(task.getId());
-
-            taskFind.ifPresent(task1 -> {
-                task1.setStatus(StatusEnum.getStatus(status));
-                if(status.equals("Assigned")){
-                    task1.setAssigneredUser(new Usuario());
-                    task1.setAssigneredUser(userFromRequest(request));
-                }
-                Task taskPersist = taskService.createOrUpdate(task1);
-                ChangeStatus changeStatus = new ChangeStatus();
-                changeStatus.setUsuario(userFromRequest(request));
-                changeStatus.setData(new Date());
-                changeStatus.setStatusEnum(StatusEnum.getStatus(status));
-                changeStatus.setTicket(taskPersist);
-                taskService.createChangesStatus(changeStatus);
-                taskResponse.setData(taskPersist);
-            });
+            taskResponse.setData(taskService.buildChangeStatus(taskFind, status,usuario));
         }catch (Exception e){
             taskResponse.getErrors().add(e.getMessage());
             return ResponseEntity.badRequest().body(taskResponse);
@@ -252,70 +210,43 @@ public class TaskController {
     @PreAuthorize("hasAnyRole('CUSTOMER','TECHNICIAN')")
     @Operation(summary = "endpoint que da um resumo da quantidade de tasks abertas por status", security = @SecurityRequirement(name = "Authorization"))
     public ResponseEntity<Response<Summary>> findSummary(){
-        AtomicReference<Integer> amountNew = new AtomicReference<>(0);
-        AtomicReference<Integer> amountAssigned = new AtomicReference<>(0);
-        AtomicReference<Integer> amountResolved = new AtomicReference<>(0);
-        AtomicReference<Integer> amountAproved = new AtomicReference<>(0);
-        AtomicReference<Integer> amountDisaproved = new AtomicReference<>(0);
-        AtomicReference<Integer> amountClosed = new AtomicReference<>(0);
-
         Response<Summary> summaryResponse = new Response<>();
-        Summary summary = new Summary();
 
         Iterable<Task> tasks = taskService.findAll();
-        tasks.forEach(task -> {
-            if(StatusEnum.New.equals(task.getStatus())){
-                amountNew.getAndSet(amountNew.get() + 1);
-            }
-            if(StatusEnum.Resolved.equals(task.getStatus())){
-                amountResolved.getAndSet(amountResolved.get() + 1);
-            }
-            if(StatusEnum.Aproved.equals(task.getStatus())){
-                amountAproved.getAndSet(amountAproved.get() + 1);
-            }
-            if(StatusEnum.Disaproved.equals(task.getStatus())){
-                amountDisaproved.getAndSet(amountDisaproved.get() + 1);
-            }
-            if(StatusEnum.Assigned.equals(task.getStatus())){
-                amountAssigned.getAndSet(amountAssigned.get() + 1);
-            }
-            if(StatusEnum.Closed.equals(task.getStatus())){
-                amountClosed.getAndSet(amountClosed.get() + 1);
-            }
-        });
-        summary.setAmountNew(amountNew.get());
-        summary.setAmountResolved(amountResolved.get());
-        summary.setAmountAproved(amountAproved.get());
-        summary.setAmountDisaproved(amountDisaproved.get());
-        summary.setAmountAssigned(amountAssigned.get());
-        summary.setAmountClosed(amountClosed.get());
-        summaryResponse.setData(summary);
+        summaryResponse.setData(taskService.buildSummary(tasks));
+
         return ResponseEntity.ok(summaryResponse);
     }
 
     private void validateChangeStatus(String id, String status, BindingResult result) {
         if(id == null || id.equals("")){
-            result.addError(new ObjectError("User", "Id no Information"));
+            result.addError(new ObjectError("ChangeStatus", "Id no Information"));
             return;
         }
         if(status == null || status.equals("")){
-            result.addError(new ObjectError("User", "status no Information"));
+            result.addError(new ObjectError("ChangeStatus", "status no Information"));
         }
     }
 
-    private void validateCreateTicket(Task task, BindingResult result){
+    private void validateCreateTask(Task task, BindingResult result){
         if(task.getTitulo() == null){
-            result.addError(new ObjectError("User", "titulo no Information"));
+            result.addError(new ObjectError("Task", "titulo no Information"));
         }
     }
 
-    private void validateUpdateTicket(Task usuario, BindingResult result){
+    private void validateUpdateTask(Task usuario, BindingResult result){
         if(usuario.getId() == null){
-            result.addError(new ObjectError("User", "Id no Information"));
+            result.addError(new ObjectError("Task", "Id no Information"));
         }
         if(usuario.getTitulo() == null){
-            result.addError(new ObjectError("User", "Titulo no Information"));
+            result.addError(new ObjectError("Task", "Titulo no Information"));
         }
+    }
+
+    private Usuario userFromRequest(HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        String email = jwtTokenUtil.getUserNameFromToken(token);
+        return usuarioService.findByEmail(email);
     }
 
 }

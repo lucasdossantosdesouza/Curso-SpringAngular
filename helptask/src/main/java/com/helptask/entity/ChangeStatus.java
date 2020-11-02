@@ -30,11 +30,11 @@ public class ChangeStatus {
         this.id = id;
     }
 
-    public Task getTicket() {
+    public Task getTask() {
         return task;
     }
 
-    public void setTicket(Task task) {
+    public void setTask(Task task) {
         this.task = task;
     }
 
