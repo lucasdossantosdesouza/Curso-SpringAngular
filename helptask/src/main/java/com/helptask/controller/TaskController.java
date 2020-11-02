@@ -87,19 +87,21 @@ public class TaskController {
                         taskResponse.getErrors().add(objectError.getDefaultMessage()));
                 return ResponseEntity.badRequest().body(taskResponse);
             }
-            Optional<Task> ticketFind = taskService.findById(task.getId());
-            if (ticketFind != null){
-                task.setStatus(ticketFind.get().getStatus());
-                task.setData(ticketFind.get().getData());
-                task.setNumber(ticketFind.get().getNumber());
-                task.setUsuario(ticketFind.get().getUsuario());
+            Optional<Task> taskFind = taskService.findById(task.getId());
+            taskFind.ifPresent(task1 -> {
+                task.setStatus(task1.getStatus());
+                task.setData(task1.getData());
+                task.setNumber(task1.getNumber());
+                task.setUsuario(task1.getUsuario());
                 task.setTitulo(task.getTitulo().toUpperCase());
-                if(ticketFind.get().getAssigneredUser() != null){
-                    task.setAssigneredUser(ticketFind.get().getAssigneredUser());
+                task.setDescription(task.getDescription());
+                task.setDataAgendamento(task.getDataAgendamento());
+                if( task1.getAssigneredUser() != null){
+                    task.setAssigneredUser(task1.getAssigneredUser());
                 }
                 Task taskPersist = taskService.createOrUpdate(task);
                 taskResponse.setData(taskPersist);
-            }
+            });
         }catch (Exception e){
             taskResponse.getErrors().add(e.getMessage());
             return ResponseEntity.badRequest().body(taskResponse);
@@ -114,7 +116,7 @@ public class TaskController {
     public ResponseEntity<Response<Task>> findById(@PathVariable("id") String id) {
         Response<Task> taskResponse = new Response<>();
         Optional<Task> taskFind = taskService.findById(id);
-        if(taskFind == null || taskFind.get() == null){
+        if(!taskFind.isPresent()){
             taskResponse.getErrors().add("Register not found id: "+id);
             return ResponseEntity.badRequest().body(taskResponse);
         }
@@ -122,7 +124,6 @@ public class TaskController {
         taskFind.get().setChangeStatus(new ArrayList<>());
         changeStatuses.forEach(changeStatus -> {
             changeStatus.setTicket(null);
-
             taskFind.get().getChangeStatus().add(changeStatus);
         });
 
@@ -135,12 +136,12 @@ public class TaskController {
     @Operation(summary = "endpoint que deleta uma task", security = @SecurityRequirement(name = "Authorization"))
     public ResponseEntity<Response<String>> delete(@PathVariable("id") String id) {
         Response<String> taskResponse = new Response<>();
-        Optional<Task> ticketFind = taskService.findById(id);
-        if(ticketFind == null || ticketFind.get() == null){
+        Optional<Task> taskFind = taskService.findById(id);
+        if(!taskFind.isPresent()){
             taskResponse.getErrors().add("Register not found id: "+id);
             return ResponseEntity.badRequest().body(taskResponse);
         }
-        taskService.delete(ticketFind.get().getId());
+        taskService.delete(taskFind.get().getId());
         return ResponseEntity.ok(new Response<String>());
     }
 
@@ -225,13 +226,13 @@ public class TaskController {
             }
             Optional<Task> taskFind = taskService.findById(task.getId());
 
-            if(taskFind != null) {
-                taskFind.get().setStatus(StatusEnum.getStatus(status));
+            taskFind.ifPresent(task1 -> {
+                task1.setStatus(StatusEnum.getStatus(status));
                 if(status.equals("Assigned")){
-                    taskFind.get().setAssigneredUser(new Usuario());
-                    taskFind.get().setAssigneredUser(userFromRequest(request));
+                    task1.setAssigneredUser(new Usuario());
+                    task1.setAssigneredUser(userFromRequest(request));
                 }
-                Task taskPersist = taskService.createOrUpdate(taskFind.get());
+                Task taskPersist = taskService.createOrUpdate(task1);
                 ChangeStatus changeStatus = new ChangeStatus();
                 changeStatus.setUsuario(userFromRequest(request));
                 changeStatus.setData(new Date());
@@ -239,7 +240,7 @@ public class TaskController {
                 changeStatus.setTicket(taskPersist);
                 taskService.createChangesStatus(changeStatus);
                 taskResponse.setData(taskPersist);
-            }
+            });
         }catch (Exception e){
             taskResponse.getErrors().add(e.getMessage());
             return ResponseEntity.badRequest().body(taskResponse);
