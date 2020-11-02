@@ -13,7 +13,7 @@ public class ChangeStatus {
     private String id;
 
     @DBRef
-    private Ticket ticket;
+    private Task task;
 
     @DBRef
     private Usuario usuario;
@@ -30,12 +30,12 @@ public class ChangeStatus {
         this.id = id;
     }
 
-    public Ticket getTicket() {
-        return ticket;
+    public Task getTicket() {
+        return task;
     }
 
-    public void setTicket(Ticket ticket) {
-        this.ticket = ticket;
+    public void setTicket(Task task) {
+        this.task = task;
     }
 
     public Usuario getUsuario() {

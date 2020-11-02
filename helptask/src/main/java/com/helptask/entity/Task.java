@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 @Document
-public class Ticket {
+public class Task {
 
     @Id
     private String id;
