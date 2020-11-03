@@ -5,48 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a5ee90a-0a99-4e59-9e23-41217af9b37e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/HelpdeskApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/api/dto/Summary.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/api/response/Response.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/controller/TicketController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/controller/UsuarioController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/entity/ChangeStatus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/entity/PriorityEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/entity/ProfileEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/entity/StatusEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/entity/Ticket.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/entity/Usuario.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/repository/ChangeStatusRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/repository/TicketRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/repository/UsuarioRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/security/config/SimpleCorsFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/security/config/WebSecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/security/controller/AuthenticationRestController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/security/jwt/JwtAuthenticationEntryPoint.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/security/jwt/JwtAuthenticationRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/security/jwt/JwtAuthenticationTokenFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/security/jwt/JwtTokenUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/security/jwt/JwtUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/security/jwt/JwtUserFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/security/model/CurrentUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/service/ChangeStatusService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/service/TicketService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/service/UsuarioService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/service/impl/ChangeStatusServiceImp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/service/impl/JwtUserDetailServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/service/impl/TicketServiceImp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/helpdesk/service/impl/UsuarioServiceImp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/helpdesk/HelpdeskApplicationTests.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../horas/src/EnumMeiaHora.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../horas/src/Horas.java" beforeDir="false" afterPath="$PROJECT_DIR$/../horas/src/Horas.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,17 +67,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="HelpdeskApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="HelpDesk" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.br.helpdesk.HelpdeskApplication" />
@@ -152,6 +101,7 @@
       <workItem from="1604078775078" duration="7589000" />
       <workItem from="1604150036468" duration="1456000" />
       <workItem from="1604234848646" duration="6100000" />
+      <workItem from="1604426566968" duration="9000" />
     </task>
     <task id="LOCAL-00001" summary="projeto helpdesk curso spring angular">
       <created>1603376359195</created>
