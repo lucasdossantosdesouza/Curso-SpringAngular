@@ -27,7 +27,7 @@ public enum EnumMeiaHora {
    VINTE(20, "vinte"),
    VINTEEUM(21, "vinte e um"),
    VINTEEDOIS(22, "vinte e dois"),
-   VINTEETRÊS(23, "vinte e três"),
+   VINTEETRES(23, "vinte e três"),
    VINTEEQUATRO(24, "vinte e quatro"),
    VINTEECINCO(25, "vinte e cinco"),
    VINTEESEIS(26, "vinte e seis"),
