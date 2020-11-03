@@ -27,7 +27,7 @@ public class Horas {
         String horário= leitor.nextLine();
         List<String> horasMinutos = split(horário);
 
-        if(!horasMinutos.isEmpty()) {
+        if(horasMinutos != null && !horasMinutos.isEmpty()) {
             horas = Integer.parseInt(horasMinutos.get(0));
             minutos = Integer.parseInt(horasMinutos.get(1));
 
