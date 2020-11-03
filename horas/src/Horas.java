@@ -41,21 +41,20 @@ public class Horas {
 
     public static void main(String[] args) {
         Scanner leitor = new Scanner(System.in);
-        System.out.println("Informe o Horário no formato HH:mm?");
+        System.out.println("Informe o Horário? Exemplo de formato: HH:mm / 03:00 ");
         String horário= leitor.nextLine();
 
         horas = Integer.parseInt(horário.split(":")[0]);
         minutos = Integer.parseInt(horário.split(":")[1]);
 
         if(minutos <=1 ){
-            System.out.println(horário);
+            System.out.println(mapUnidade.get(horas) +" hora(s)");
         }else if(minutos > 1 && minutos <= 30){
             System.out.println(horário);
         }else{
             Integer falta = 60 - minutos;
             Integer proximaHora = horas + 1;
-            System.out.println(mapUnidade.get(falta)+ " minutos para as "+ mapUnidade.get(proximaHora) +" horas" );
+            System.out.println(mapUnidade.get(falta)+ " minuto(s) para as "+ mapUnidade.get(proximaHora) +" hora(s)" );
         }
-
     }
 }
