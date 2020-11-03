@@ -33,7 +33,8 @@ public enum EnumMeiaHora {
    VINTEESEIS(26, "vinte e seis"),
    VINTEESETE(27, "vinte e sete"),
    VINTEEOITO(28, "vinte e oito"),
-   VINTEENOVE(29, "vinte e nove");
+   VINTEENOVE(29, "vinte e nove"),
+   TRINTA(30, "trinta");
 
    private final Integer codigo;
 
