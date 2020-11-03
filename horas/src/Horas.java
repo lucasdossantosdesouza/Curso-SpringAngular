@@ -51,9 +51,9 @@ public class Horas {
     }
 
     private static void encerrar(String[] args, Scanner leitor) {
-        System.out.println("Para finalizar tecle 1 ");
-        Integer exit = Integer.valueOf(leitor.nextLine());
-        if(exit != 1) {
+        System.out.println("Para finalizar tecle (1) ou qualquer tecla para continuar!! ");
+        String exit = leitor.nextLine();
+        if(exit == null || !exit.equals("1")) {
             main(args);
         }else{
             System.exit(0);
