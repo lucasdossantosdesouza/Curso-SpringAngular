@@ -22,6 +22,7 @@ public class Horas {
 
     public static void main(String[] args) {
         Scanner leitor = new Scanner(System.in);
+
         System.out.println("Informe o Horário? Exemplo de formato: HH:mm / 03:00 ");
         String horário= leitor.nextLine();
         List<String> horasMinutos = separaHoradeMinuto(horário);
@@ -41,6 +42,13 @@ public class Horas {
             }
         }else{
             main(args);
+        }
+        System.out.println("Para finalizar tecle 1 ");
+        Integer exit = Integer.valueOf(leitor.nextLine());
+        if(exit != 1) {
+            main(args);
+        }else{
+            System.exit(0);
         }
     }
 
