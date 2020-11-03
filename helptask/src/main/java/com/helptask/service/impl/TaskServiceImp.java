@@ -48,6 +48,7 @@ public class TaskServiceImp implements TaskService {
         task.setData(new Date());
         task.setNumber(generatedNumber());
         task.setTitulo(task.getTitulo().toUpperCase());
+        task.setTempoGasto(task.getTempoGasto() != null ? task.getTempoGasto().trim() : "");
         return task;
     }
     public Task buildTaskUpdate(Task task){
