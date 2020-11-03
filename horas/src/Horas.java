@@ -30,19 +30,27 @@ public class Horas {
         if(horasMinutos != null && !horasMinutos.isEmpty()) {
             horas = Integer.parseInt(horasMinutos.get(0));
             minutos = Integer.parseInt(horasMinutos.get(1));
-
-            if (minutos <= 1) {
-                System.out.println(geraHorasOuMinutosPorExtenso(horas) + " hora(s)");
-            } else if (minutos > 1 && minutos <= 30) {
-                System.out.println("São " + geraHorasOuMinutosPorExtenso(horas) + " e " + geraHorasOuMinutosPorExtenso(minutos) );
-            } else {
-                Integer falta = 60 - minutos;
-                Integer proximaHora = horas + 1;
-                System.out.println(geraHorasOuMinutosPorExtenso(falta) + " minuto(s) para a(s) " + geraHorasOuMinutosPorExtenso(proximaHora) + " hora(s)");
-            }
+            buildmprimeTempoEmPalvras();
         }else{
             main(args);
         }
+
+        encerrar(args,leitor);
+    }
+
+    private static void buildmprimeTempoEmPalvras() {
+        if (minutos <= 1) {
+            System.out.println(geraHorasOuMinutosPorExtenso(horas) + " hora(s)");
+        } else if (minutos > 1 && minutos <= 30) {
+            System.out.println("São " + geraHorasOuMinutosPorExtenso(horas) + " e " + geraHorasOuMinutosPorExtenso(minutos) );
+        } else {
+            Integer falta = 60 - minutos;
+            Integer proximaHora = horas + 1;
+            System.out.println(geraHorasOuMinutosPorExtenso(falta) + " minuto(s) para a(s) " + geraHorasOuMinutosPorExtenso(proximaHora) + " hora(s)");
+        }
+    }
+
+    private static void encerrar(String[] args, Scanner leitor) {
         System.out.println("Para finalizar tecle 1 ");
         Integer exit = Integer.valueOf(leitor.nextLine());
         if(exit != 1) {
