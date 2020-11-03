@@ -10,8 +10,7 @@ public class Horas {
     public static String geraHorasOuMinutosPorExtenso(Integer valor){
         return EnumMeiaHora.findByCodigo(valor).getValor();
     }
-
-    public static List<String> separaHoradeMinuto(String str){
+   public static List<String> separaHoradeMinuto(String str){
         if(!str.isEmpty()) {
             return Stream.of(str.split(":"))
                     .map(hm -> new String(hm))
@@ -34,11 +33,11 @@ public class Horas {
             if (minutos <= 1) {
                 System.out.println(geraHorasOuMinutosPorExtenso(horas) + " hora(s)");
             } else if (minutos > 1 && minutos <= 30) {
-                System.out.println(horário);
+                System.out.println("São " + geraHorasOuMinutosPorExtenso(horas) + " e " + geraHorasOuMinutosPorExtenso(minutos) );
             } else {
                 Integer falta = 60 - minutos;
                 Integer proximaHora = horas + 1;
-                System.out.println(geraHorasOuMinutosPorExtenso(falta) + " minuto(s) para as " + geraHorasOuMinutosPorExtenso(proximaHora) + " hora(s)");
+                System.out.println(geraHorasOuMinutosPorExtenso(falta) + " minuto(s) para a(s) " + geraHorasOuMinutosPorExtenso(proximaHora) + " hora(s)");
             }
         }else{
             main(args);
